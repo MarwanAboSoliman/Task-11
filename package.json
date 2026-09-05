@@ -1,13 +1,13 @@
 {
-  "name": "expressjs",
+  "name": "Task11",
   "version": "1.0.0",
   "description": "",
-  "main": "db.js",
+  "main": "index.js",
   "scripts": {
     "dev": "node --watch index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marwan",
   "license": "ISC",
   "type": "module",
   "dependencies": {
