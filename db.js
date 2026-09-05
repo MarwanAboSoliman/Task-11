@@ -57,17 +57,6 @@ export function createDb() {
       };
       await fs.writeFile(dbPath, JSON.stringify(newData));
     },
-    // //Utl For authors
-    // async getAllAuthors(resource) {
-    //   const data = await fs.readFile(dbPath, { encoding: "utf-8" });
-    //   const json = JSON.parse(data);
-    //   return json[resource];
-    // },
-    // async getOneAuthors(resource, id) {
-    //   const data = await fs.readFile(dbPath, { encoding: "utf-8" });
-    //   const json = JSON.parse(data);
-    //   return json[resource].find((auth) => String(auth.id) === String(id));
-    // },
     async search(resource, name) {
       const data = await fs.readFile(dbPath, { encoding: "utf-8" });
       const json = JSON.parse(data);
@@ -75,45 +64,23 @@ export function createDb() {
         auth.name.toLowerCase().startsWith(name.toLowerCase()),
       );
     },
-    // async createAuthour(resource, obj) {
-    //   const data = await fs.readFile(dbPath, { encoding: "utf-8" });
-    //   const json = JSON.parse(data);
-    //   const newObj = { ...obj, id: getId() };
-    //   const newResource = [...json[resource], newObj];
-    //   const newData = { ...json, [resource]: newResource };
-    //   await fs.writeFile(dbPath, JSON.stringify(newData));
-    //   return newObj;
-    // },
-    // async updateAuthour(resource, id, updates) {
-    //   const data = await fs.readFile(dbPath, { encoding: "utf-8" });
-    //   const json = JSON.parse(data);
-    //   const newResource = json[resource].map((x) => {
-    //     if (x.id !== id) {
-    //       return x;
-    //     } else {
-    //       return {
-    //         ...x,
-    //         ...updates,
-    //         id: x.id,
-    //       };
-    //     }
-    //   });
-    //   const newData = {
-    //     ...json,
-    //     [resource]: newResource,
-    //   };
-    //   await fs.writeFile(dbPath, JSON.stringify(newData));
-    // },
-    // async deleteAuthour(resource, id) {
-    //   const data = await fs.readFile(dbPath, { encoding: "utf-8" });
-    //   const json = JSON.parse(data);
-    //   const newResource = json[resource].filter((auth) => auth.id !== id);
-    //   const newData = {
-    //     ...json,
-    //     [resource]: newResource,
-    //   };
-    //   await fs.writeFile(dbPath, JSON.stringify(newData));
-    // },
+    async logError(errorData) {
+      const data = await fs.readFile(dbPath, { encoding: "utf-8" });
+      const json = JSON.parse(data);
+
+      const newError = {
+        ...errorData,
+      };
+
+      const existingErrors = json.errors || [];
+      const newData = {
+        ...json,
+        errors: [...existingErrors, newError],
+      };
+
+      await fs.writeFile(dbPath, JSON.stringify(newData, null, 2));
+      return newError;
+    },
   };
 }
 
