@@ -18,33 +18,14 @@
       "name": "George R.R Martin",
       "age": 77,
       "country": "USA",
-      "books": [
-        "Song Of Ice And Fire"
-      ],
+      "books": ["Song Of Ice And Fire"],
       "id": "555"
     },
     {
       "name": "Test Name",
       "age": 78,
-      "books": [
-        "testBook"
-      ],
+      "books": ["testBook"],
       "id": "747"
-    }
-  ],
-  "errors": [
-    {
-      "time": "2026-09-05T14:53:00.000Z",
-      "method": "POST",
-      "url": "/authors",
-      "message": "Expected double-quoted property name in JSON at position 112 (line 6 column 1)",
-      "stack": "SyntaxError: Expected double-quoted property name in JSON at position 112 (line 6 column 1)\n    at JSON.parse (<anonymous>)\n    at parse (C:\\Users\\Marwan\\Desktop\\BackEndNodeJS\\Task 11\\node_modules\\body-parser\\lib\\types\\json.js:91:21)\n    at C:\\Users\\Marwan\\Desktop\\BackEndNodeJS\\Task 11\\node_modules\\body-parser\\lib\\read.js:162:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:228:14)\n    at invokeCallback (C:\\Users\\Marwan\\Desktop\\BackEndNodeJS\\Task 11\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\Marwan\\Desktop\\BackEndNodeJS\\Task 11\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\Marwan\\Desktop\\BackEndNodeJS\\Task 11\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:508:28)\n    at endReadableNT (node:internal/streams/readable:1729:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)"
-    },
-    {
-      "time": "2026-09-05 17:56:01",
-      "method": "POST",
-      "url": "/authors",
-      "message": "Expected double-quoted property name in JSON at position 112 (line 6 column 1)"
     }
   ]
 }

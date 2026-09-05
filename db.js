@@ -1,6 +1,7 @@
 import path from "path";
 import fs from "fs/promises";
 const dbPath = path.join(import.meta.dirname, "data.json");
+const errorPath = path.join(import.meta.dirname , "errors.json") //new
 export function createDb() {
   return {
     //Utl for Users
@@ -64,8 +65,8 @@ export function createDb() {
         auth.name.toLowerCase().startsWith(name.toLowerCase()),
       );
     },
-    async logError(errorData) {
-      const data = await fs.readFile(dbPath, { encoding: "utf-8" });
+    async logError(errorData) { // new
+      const data = await fs.readFile(errorPath, { encoding: "utf-8" });
       const json = JSON.parse(data);
 
       const newError = {
@@ -78,7 +79,7 @@ export function createDb() {
         errors: [...existingErrors, newError],
       };
 
-      await fs.writeFile(dbPath, JSON.stringify(newData, null, 2));
+      await fs.writeFile(errorPath, JSON.stringify(newData, null, 2));
       return newError;
     },
   };
